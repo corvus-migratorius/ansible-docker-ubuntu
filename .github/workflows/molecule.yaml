@@ -1,5 +1,5 @@
 ---
-name: molecule
+name: CI
 'on':
   pull_request:
   push:
@@ -9,7 +9,7 @@ name: molecule
 jobs:
 
   molecule:
-    name: Molecule
+    name: molecule
     runs-on: ubuntu-latest
 
     strategy:

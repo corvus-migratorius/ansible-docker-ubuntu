@@ -1,5 +1,5 @@
 ---
-name: lint
+name: CI
 'on':
   pull_request:
   push:
@@ -9,7 +9,7 @@ name: lint
 jobs:
 
   lint:
-    name: Lint
+    name: linters
     runs-on: ubuntu-latest
     steps:
       - name: Check out the codebase.
