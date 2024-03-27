@@ -1,0 +1,20 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: false
+  any_errors_fatal: true
+
+  tasks:
+    # https://github.com/ansible/molecule/issues/3587#issuecomment-1158650179
+    - name: "Include default vars"
+      ansible.builtin.include_vars:
+        dir: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') }}/defaults/"
+        extensions: [ 'yml' ]
+
+    - name: "Sanity check Docker by running a `hello-world` container"  # noqa: no-changed-when
+      ansible.builtin.command:
+        cmd: "docker run --rm hello-world"
+
+    - name: "Check if `Compose` is available from PATH"  # noqa: no-changed-when
+      ansible.builtin.command:
+        cmd: "docker compose version"

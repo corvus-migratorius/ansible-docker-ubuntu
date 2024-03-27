@@ -1,0 +1,60 @@
+---
+- name: "Install aptitude"
+  tags: [ docker-ubuntu ]
+  ansible.builtin.apt:
+    name: aptitude
+    state: present
+    cache_valid_time: 600
+
+- name: "Install required system packages"
+  tags: [ docker-ubuntu ]
+  ansible.builtin.apt:
+    pkg:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gpg-agent
+      - python3-pip
+      - python3-setuptools
+      - software-properties-common
+      - virtualenv
+    state: present
+
+- name: "Add Docker GPG apt Key"
+  tags: [ docker-ubuntu ]
+  ansible.builtin.apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: "Add Docker Repository"
+  tags: [ docker-ubuntu ]
+  ansible.builtin.apt_repository:
+    repo: "deb https://download.docker.com/linux/ubuntu {{ ansible_lsb.codename }} stable"
+    state: present
+
+- name: "Install Docker ecosystem"
+  tags: [ docker-ubuntu ]
+  ansible.builtin.apt:
+    pkg:
+      - docker-ce
+      - docker-ce-cli
+    state: present
+    update_cache: true
+
+- name: "Ensure the 'docker' group exists"
+  tags: [ docker-ubuntu ]
+  ansible.builtin.group:
+    name: docker
+    state: present
+    system: true
+
+- name: "Install Python tools for Docker"
+  ansible.builtin.pip:
+    name: [ docker ]
+
+- name: "Spin up the Docker system service"
+  tags: [ docker-ubuntu ]
+  ansible.builtin.systemd:
+    name: docker
+    state: started
+    enabled: true
