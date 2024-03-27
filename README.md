@@ -3,9 +3,9 @@ docker_ubuntu
 
 Install Docker ecosystem on Ubuntu.
 
-[![CI-lint](https://github.com/corvus-migratorius/ansible-docker-ubuntu/actions/workflows/lint.yaml/badge.svg)](https://github.com/corvus-migratorius/ansible-docker-ubuntu/actions/workflows/lint.yaml)
+[![lint](https://github.com/corvus-migratorius/ansible-docker-ubuntu/actions/workflows/lint.yaml/badge.svg)](https://github.com/corvus-migratorius/ansible-docker-ubuntu/actions/workflows/lint.yaml)
 
-[![CI-molecule](https://github.com/corvus-migratorius/ansible-docker-ubuntu/actions/workflows/molecule.yaml/badge.svg)](https://github.com/corvus-migratorius/ansible-docker-ubuntu/actions/workflows/molecule.yaml)
+[![molecule](https://github.com/corvus-migratorius/ansible-docker-ubuntu/actions/workflows/molecule.yaml/badge.svg)](https://github.com/corvus-migratorius/ansible-docker-ubuntu/actions/workflows/molecule.yaml)
 
 Requirements
 ------------
