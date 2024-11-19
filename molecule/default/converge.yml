@@ -3,3 +3,6 @@
   hosts: all
   roles:
     - role: genlab.docker_ubuntu
+      du_registry_mirrors:
+        - https://docker.io
+        - https://mirror.gcr.io
