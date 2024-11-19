@@ -36,8 +36,8 @@
   notify: "Sanity check"
   ansible.builtin.apt:
     pkg:
-      - docker-ce
-      - docker-ce-cli
+      - docker-ce={{ du_docker_version_full }}
+      - docker-ce-cli={{ du_docker_version_full }}
     state: present
     update_cache: true
 
