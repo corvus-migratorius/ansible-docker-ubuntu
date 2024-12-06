@@ -24,14 +24,8 @@
       ansible.builtin.command:
         cmd: "docker version --format '{{ '{{' }} .Server.Version {{ '}}' }}'"
 
-    - debug:
-        msg: "{{ du_docker_version }}"
-
-    - debug:
-        msg: "{{ docker_version.stdout | regex_search(du_docker_version)}}"
-
     - name: "Check if Docker has the expected version"  # noqa: no-changed-when
       ansible.builtin.assert:
         that: "du_docker_version in docker_version.stdout"
-        success_msg: "Docker has the expected version ({{ docker_version.stdout }})"
+        success_msg: "Docker has the expected version ({{ docker_version.stdout }} )"
         fail_msg: "Unexpected Docker version ({{ docker_version.stdout }})"
