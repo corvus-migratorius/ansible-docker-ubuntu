@@ -32,7 +32,6 @@
     state: present
 
 - name: "Install Docker ecosystem"
-  tags: [ docker_ubuntu ]
   notify: "Sanity check"
   ansible.builtin.apt:
     pkg:
